@@ -27,6 +27,10 @@
 ```
 weightsKWNN = function(i, k)  (k + 1 - i) / k
 ```
+Просто сравнивая результаты работы алгоритмов __kNN__ и __kwNN__ можно увидеть насколько лучше работает kwNN.
+![](https://raw.githubusercontent.com/vinovatvolondemord/ML0/master/img/img2.PNG)
+![](https://raw.githubusercontent.com/vinovatvolondemord/ML0/master/img/img4.PNG)
+Для __kNN__ любые шумовые точки влияют на его работу. В __kwNN__ же результат более сглаженный
 ## Байесовский классификатор
 ###  Наивный Нормальный Байесовский Классификатор
 "Наивный" классификатор будет думать что все X имеют n признаков: x={eps1,eps2,...,epsn}
