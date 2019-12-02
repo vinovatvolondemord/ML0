@@ -31,7 +31,7 @@ baiesNaiv <- function(x, mu, sigma, lamda, P){
   return(myfunction)
 }
 
-muCreat <- function(xl) (c(sum(xl[,1])/(dim(xl)[1]), sum(xl[,2])/(dim(xl)[1])))
+muCreat <- function(xl) (c(sum(xl[,1],na.rm = FALSE)/(dim(xl)[1]), sum(xl[,2],na.rm = FALSE)/(dim(xl)[1])))
 
 sigmaCreat <- function(xl, mu) (c(sum((xl[,1] - mu[1])^2)/(dim(xl)[1]), sum((xl[,2] - mu[2])^2)/(dim(xl)[1])))
 
@@ -41,10 +41,10 @@ mu2 <- muCreat(x2)
 sigma1 <- sigmaCreat(x1, mu1)
 sigma2 <- sigmaCreat(x2, mu2)
 
-x1 <- -10;
+x1 <- (-10);
 
 while(x1 < 15){
-  x2 <- -5;
+  x2 <- (-5)
   
   while(x2 < 10){          
     
