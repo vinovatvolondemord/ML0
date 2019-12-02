@@ -27,7 +27,7 @@
 ```
 weightsKWNN = function(i, k)  (k + 1 - i) / k
 ```
-Просто сравнивая результаты работы алгоритмов __kNN__ и __kwNN__ можно увидеть насколько лучше работает kwNN.
+Просто сравнивая результаты работы алгоритмов __kNN__ и __kwNN__ можно увидеть насколько лучше работает __kwNN__.
 ![](https://raw.githubusercontent.com/vinovatvolondemord/ML0/master/img/img2.PNG)
 ![](https://raw.githubusercontent.com/vinovatvolondemord/ML0/master/img/img4.PNG)
 
