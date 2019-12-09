@@ -82,7 +82,7 @@ baiesNaiv <- function(x, mu, sigma, lamda, P){
   return(myfunction)
 }
 ```
-
+Я взял выборку из 100 элементов 
 ![](https://raw.githubusercontent.com/vinovatvolondemord/ML0/master/img/Rplot.png)
 
 
