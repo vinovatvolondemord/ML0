@@ -69,7 +69,19 @@ __kwNN__ лучше __kNN__. тем что он более устойчив к �
 
 где 
 ![](https://latex.codecogs.com/gif.latex?P%28yj%28%5Cxi%20_j%20%29%29%3D%5Cfrac%7B1%7D%7B%5Csqrt%5B%5D%7B2%5Cpi%5Csigma%5E2_y%7D%7Dexp%28-%5Cfrac%7B%28x_i-%5Cmu_y%29%5E2%7D%7B2%5Csigma%5E2_y%7D%29)
-
+```
+baiesNaiv <- function(x, mu, sigma, lamda, P){
+  n <- 2
+  myfunction <- log(lamda*P)
+  pyj<-0
+  for(i in 1 : n){
+    pyj <- pyj + log( (1/(sigma[i]*sqrt(2*pi))) * exp(-1 * ((x[i] - mu[i])^2)/(2*sigma[i]^2)))
+    
+  }
+  myfunction <- myfunction + pyj
+  return(myfunction)
+}
+```
 
 ![](https://raw.githubusercontent.com/vinovatvolondemord/ML0/master/img/Rplot.png)
 
