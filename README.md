@@ -72,3 +72,7 @@ __kwNN__ лучше __kNN__. тем что он более устойчив к �
 
 
 ![](https://raw.githubusercontent.com/vinovatvolondemord/ML0/master/img/Rplot.png)
+
+
+
+https://ranalytics.github.io/data-mining/072-NBC.html
