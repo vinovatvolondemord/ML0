@@ -84,7 +84,6 @@ stohastGrad = function(xl,classes,L, rule){
     eta = 1 / cnt
     w = rule(w, eta, xi, yi)
     
-    # íîâîå Q
     
     Q[j] = (1 - lambda) * Q[j-1] + lambda * error
     
