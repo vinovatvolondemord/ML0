@@ -7,10 +7,7 @@ normalize = function(xl) {
   }
   return(xl)
 }
-for(i in 1:dim(xl)[1]){
-  classes[i] = normalisation(i)	
-}
-classes
+
 lstandart = function(x) x;
 adaline = function(x)  (x - 1) ^ 2
 adalineW = function(w, eta, xi, yi) w - eta * (sum(w * xi) - yi) * xi
