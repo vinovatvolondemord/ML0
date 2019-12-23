@@ -99,7 +99,7 @@ w = runif(cols, -1 / (2 * cols), 1 / (2 * cols))
 ### Метод Стохастического Градиента
 
 ### ADALINE
-Адаптивны линейный элемент (ADALINE) - это алгоритм использующий такую функцию потерь ![](https://raw.githubusercontent.com/TIR13/ML0/master/line/img/ada_loss.png) Ну и фукция потерь аходиться по формуле ![](https://raw.githubusercontent.com/TIR13/ML0/master/line/img/ada_upd.png).
+Адаптивны линейный элемент (ADALINE) - это алгоритм использующий такую функцию потерь ![](https://raw.githubusercontent.com/TIR13/ML0/master/line/img/ada_loss.png) Ну и обновление весов находим по формуле формуле ![](https://raw.githubusercontent.com/TIR13/ML0/master/line/img/ada_upd.png).
 
 ```
 adaline = function(x)  (x - 1) ^ 2
