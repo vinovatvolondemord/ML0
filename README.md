@@ -90,5 +90,6 @@ baiesNaiv <- function(x, mu, sigma, lamda, P){
 
 ## Линейные Алгоритмы
 ### Метод Стахостического Градиента
+### ADALINE
 
 https://ranalytics.github.io/data-mining/072-NBC.html
