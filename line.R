@@ -40,7 +40,7 @@ stohastGrad = function(xl,classes,L, rule){
   cnt = 0
   for(j in 2:1000) {
     cnt = cnt + 1
-
+    
     margins = rep(0, rows)
     for (i in 1:rows) {
       xi = xl[i,]
@@ -49,20 +49,20 @@ stohastGrad = function(xl,classes,L, rule){
     }
     errorIndex = which(margins <= 0)
     
-
+    
     
     if(length(errorIndex)!=0)
       i = sample(errorIndex, 1)
     else
-      i = sample(1:rows,1)
+      break
     
     xi = xl[i,]
     yi = classes[i]
     
-
+    
     margin = sum(w * xi) * yi
     error = L(margin)
- 
+    
     eta = 1 / cnt
     w = rule(w, eta, xi, yi)
     
@@ -90,7 +90,7 @@ x2 <- mvrnorm(n = objectCounter, mu2, sigma2)
 xl <- rbind(x1,x2)
 xl <- normalize(xl)
 xl <- cbind(xl, rep(-1, n+n))
-xl <- cbind(xl, c(rep(-1, n), rep(1, n)))
+
 
 colorsn <- c(rep(2, n), rep(1, n))
 classes <- c(rep(-1, n), rep(1, n))
