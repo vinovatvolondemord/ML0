@@ -92,7 +92,12 @@ baiesNaiv <- function(x, mu, sigma, lamda, P){
 ### Метод Стахостического Градиента
 
 ### ADALINE
-Адаптивны линейный элемент (ADALINE) - это алгоритм использующий такую функцию потерь !(https://raw.githubusercontent.com/TIR13/ML0/master/line/img/ada_loss.png)[]
+Адаптивны линейный элемент (ADALINE) - это алгоритм использующий такую функцию потерь ![](https://raw.githubusercontent.com/TIR13/ML0/master/line/img/ada_loss.png) Ну и фукция потерь аходиться по формуле.
+```
+adaline = function(x)  (x - 1) ^ 2
+adalineW = function(w, eta, xi, yi) w - eta * (sum(w * xi) - yi) * xi
+
+```
 Пример
 
 https://ranalytics.github.io/data-mining/072-NBC.html
