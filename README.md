@@ -96,8 +96,36 @@ baiesNaiv <- function(x, mu, sigma, lamda, P){
 ```
 w = runif(cols, -1 / (2 * cols), 1 / (2 * cols))
 ```
-### Метод Стохастического Градиента
-
+После находим начальные значения функционала Q
+```
+for (i in 1:rows) {
+    margin = sum(w * xl[i,]) * classes[i]
+    Q[1] = Q[1] + L(margin)
+  } 
+```
+Мы идем по нашей выборке и находим отступ и ошибку 
+```
+ margin = sum(w * xi) * yi
+    error = L(margin)
+    
+```
+где L наша функция потерь
+далее делаем шаг градиентного спуска и находим функционал 
+```
+w = rule(w, eta, xi, yi) 
+    Q[j] = (1 - lambda) * Q[j-1] + lambda * error
+```
+и наконец условия выхода из цикла
+```
+if(length(errorIndex)!=0)
+      i = sample(errorIndex, 1)
+    else
+      break
+```
+```
+if (abs(Q[j-1] - Q[j]) / abs(max(Q[j-1], Q[j])) < 1e-5)
+      break;
+```
 ### ADALINE
 Адаптивны линейный элемент (ADALINE) - это алгоритм использующий такую функцию потерь ![](https://raw.githubusercontent.com/TIR13/ML0/master/line/img/ada_loss.png) Ну и обновление весов находим по формуле формуле ![](https://raw.githubusercontent.com/TIR13/ML0/master/line/img/ada_upd.png).
 
@@ -108,9 +136,7 @@ adalineW = function(w, eta, xi, yi) w - eta * (sum(w * xi) - yi) * xi
 ```
 Пример 
 
-для Линейно-разделимой выборки.
-![](https://github.com/vinovatvolondemord/ML0/blob/master/img/ADALINE.png)
+![](https://github.com/vinovatvolondemord/ML0/blob/master/img/ADALINE12.png)
 
-для Линейно не разделимой выборки
 ![](https://github.com/vinovatvolondemord/ML0/blob/master/img/ADALINE21.png)
 
