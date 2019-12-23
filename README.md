@@ -99,5 +99,8 @@ adalineW = function(w, eta, xi, yi) w - eta * (sum(w * xi) - yi) * xi
 
 ```
 Пример
+![](https://github.com/vinovatvolondemord/ML0/blob/master/img/ADALINE.png)
 
+
+![](https://github.com/vinovatvolondemord/ML0/blob/master/img/ADALINE2.png)
 https://ranalytics.github.io/data-mining/072-NBC.html
