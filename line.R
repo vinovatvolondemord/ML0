@@ -1,4 +1,3 @@
-objectCounter <- 100
 library(MASS)
 normalize = function(xl) {
   cols = dim(xl)[2]
@@ -8,38 +7,24 @@ normalize = function(xl) {
   }
   return(xl)
 }
-
-sigma1 <- matrix(c(1, 0, 0, 1),2,2)
-sigma2 <- matrix(c(1, 0, 0, 1),2,2)
-
-mu1 <- c(0,4)
-mu2 <- c(4,0)
-
-x1 <- mvrnorm(n = objectCounter, mu1, sigma1)
-x2 <- mvrnorm(n = objectCounter, mu2, sigma2)
-
-xy1 <- cbind(x1,1) 
-xy2 <- cbind(x2,2) 
-
-xl <- rbind(xy1,xy2)
-
-colors <- c("red", "blue")
-plot(xl[,1],xl[,2], pch = 21,main = "ADALINE", col = colors[xl[,3]], asp = 1, bg=colors[xl[,3]])
-normalisation = function(i){
-  if (xl[i,3] == 1)
-    return (-1)
-  else 
-    return (1)
-}
-classes <- 0
 for(i in 1:dim(xl)[1]){
   classes[i] = normalisation(i)	
 }
 classes
 lstandart = function(x) x;
 adaline = function(x)  (x - 1) ^ 2
-adalineW = function(w, eta, xi, yi) {
-  w - eta * (sum(w * xi) - yi) * xi
+adalineW = function(w, eta, xi, yi) w - eta * (sum(w * xi) - yi) * xi
+
+
+perceptron = function(x)  max(-x, 0)
+perceptronW = function(w, eta, xi, yi)   w + eta * yi * xi
+
+regression = function(x)  log2(1 + exp(-x))
+regressionW = function(w, eta, xi, yi) {
+  sigmoid = function(z) {
+    1 / (1 + exp(-z))
+  }  
+  w + eta * xi * yi * sigmoid(-sum(w * xi) * yi)
 }
 
 stohastGrad = function(xl,classes,L, rule){
@@ -87,14 +72,36 @@ stohastGrad = function(xl,classes,L, rule){
     
     Q[j] = (1 - lambda) * Q[j-1] + lambda * error
     
-  #  if (abs(Q[j-1] - Q[j]) / abs(max(Q[j-1], Q[j])) < 1e-5)
-    #  break;
-    drawLine(w, "brown")
+    if (abs(Q[j-1] - Q[j]) / abs(max(Q[j-1], Q[j])) < 1e-5)
+      break;
+    drawLine(w, "green")
   }  
   return(w)
 }
 drawLine = function(w, color) {
   abline(a = w[3] / w[2], b = -w[1] / w[2], lwd = 1, col = color)
 }
+n <- 100
+sigma1 <- matrix(c(1, 0, 0, 1),2,2)
+sigma2 <- matrix(c(1, 0, 0, 1),2,2)
+
+mu1 <- c(0,4)
+mu2 <- c(4,0)
+
+x1 <- mvrnorm(n = objectCounter, mu1, sigma1)
+x2 <- mvrnorm(n = objectCounter, mu2, sigma2)
+xl <- rbind(x1,x2)
+xl <- normalize(xl)
+xl <- cbind(xl, rep(-1, n+n))
+xl <- cbind(xl, c(rep(-1, n), rep(1, n)))
+
+colorsn <- c(rep(2, n), rep(1, n))
+classes <- c(rep(-1, n), rep(1, n))
+colors <- c("red", "blue")
+
+plot(xl[,1],xl[,2], pch = 21,main = "ADALINE", col = colors[colorsn], asp = 1, bg=colors[colorsn])
+
 w1 <- stohastGrad(xl, classes, adaline, adalineW)
+#w2 = stohastGrad(xl, classes, regression, regressionW)
+#drawLine(w2, "orange") 
 drawLine(w1, "black")
