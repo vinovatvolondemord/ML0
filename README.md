@@ -89,10 +89,10 @@ baiesNaiv <- function(x, mu, sigma, lamda, P){
 ![](https://raw.githubusercontent.com/vinovatvolondemord/ML0/master/img/Rplot.png)
 
 ## Линейные Алгоритмы
-### Метод Стахостического Градиента
+### Метод Стохастического Градиента
 
 ### ADALINE
-Адаптивны линейный элемент (ADALINE) - это алгоритм использующий такую функцию потерь ![](https://raw.githubusercontent.com/TIR13/ML0/master/line/img/ada_loss.png) Ну и фукция потерь аходиться по формуле.
+Адаптивны линейный элемент (ADALINE) - это алгоритм использующий такую функцию потерь ![](https://raw.githubusercontent.com/TIR13/ML0/master/line/img/ada_loss.png) Ну и фукция потерь аходиться по формуле ![](https://raw.githubusercontent.com/TIR13/ML0/master/line/img/ada_upd.png).
 ```
 adaline = function(x)  (x - 1) ^ 2
 adalineW = function(w, eta, xi, yi) w - eta * (sum(w * xi) - yi) * xi
