@@ -89,18 +89,28 @@ baiesNaiv <- function(x, mu, sigma, lamda, P){
 ![](https://raw.githubusercontent.com/vinovatvolondemord/ML0/master/img/Rplot.png)
 
 ## Линейные Алгоритмы
+Линейным классификатором называется алгоритм классификации вида: ![](https://raw.githubusercontent.com/TIR13/ML0/master/line/img/klass.gif)
+Для  решения нашей задачи классификации мы используем метод стохастического градиента
+В этом методе выбирается некоторое приближение для w, затем запускается итерационый процесс на каждом шаге которого вектор w изменяется в направлении наибольее быстрого убывания функционала Q.
+Я инициализирую веса таким способом:
+```
+w = runif(cols, -1 / (2 * cols), 1 / (2 * cols))
+```
 ### Метод Стохастического Градиента
 
 ### ADALINE
 Адаптивны линейный элемент (ADALINE) - это алгоритм использующий такую функцию потерь ![](https://raw.githubusercontent.com/TIR13/ML0/master/line/img/ada_loss.png) Ну и фукция потерь аходиться по формуле ![](https://raw.githubusercontent.com/TIR13/ML0/master/line/img/ada_upd.png).
+
 ```
 adaline = function(x)  (x - 1) ^ 2
 adalineW = function(w, eta, xi, yi) w - eta * (sum(w * xi) - yi) * xi
 
 ```
-Пример
+Пример 
+
+для Линейно-разделимой выборки.
 ![](https://github.com/vinovatvolondemord/ML0/blob/master/img/ADALINE.png)
 
-
+для Линейно не разделимой выборки
 ![](https://github.com/vinovatvolondemord/ML0/blob/master/img/ADALINE21.png)
 
