@@ -102,5 +102,5 @@ adalineW = function(w, eta, xi, yi) w - eta * (sum(w * xi) - yi) * xi
 ![](https://github.com/vinovatvolondemord/ML0/blob/master/img/ADALINE.png)
 
 
-![](https://github.com/vinovatvolondemord/ML0/blob/master/img/ADALINE2.png)
+![](https://github.com/vinovatvolondemord/ML0/blob/master/img/ADALINE21.png)
 
