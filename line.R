@@ -71,7 +71,7 @@ stohastGrad = function(xl,classes,L, rule){
     
     if (abs(Q[j-1] - Q[j]) / abs(max(Q[j-1], Q[j])) < 1e-5)
       break;
-    drawLine(w, "green")
+   # drawLine(w, "green")
   }  
   return(w)
 }
@@ -99,23 +99,39 @@ colors <- c("red", "blue")
 plot(xl[,1],xl[,2], pch = 21,main = "ADALINE", col = colors[colorsn], asp = 1, bg=colors[colorsn])
 
 w1 <- stohastGrad(xl, classes, adaline, adalineW)
-#w2 = stohastGrad(xl, classes, regression, regressionW)
-#drawLine(w2, "orange") 
+w2 = stohastGrad(xl, classes, perceptron, perceptronW)
+w3 = stohastGrad(xl, classes, regression, regressionW)
+
 drawLine(w1, "black")
+drawLine(w2, "red") 
+drawLine(w3, "blue")
+
 map = function(){
 	for(i in seq(0, 1, 0.02)){
-   for(j in seq(0,1,0.02)){
-	color=classifADA (i, j)
-      if(color == -1)color=2
-points(i, j, pch = 1,col=colors[color])
-      
-    }
-  }
+  	 	for(j in seq(0,1,0.02)){
+			#color=classifADA (i, j)
+			color=classifREGR (i, j)
+			#color=classifPERS (i, j)
+      		if(color == -1)color=2
+			points(i, j, pch = 1,col=colors[color])
+    		}
+  	}
+}
+#map()
+classifPERS = function(x,y){
+	if (w2[3] / w2[2] - w2[1] / w2[2] * x < y)
+		return (-1)
+	else return (1)
+}
+
+classifREGR = function(x,y){
+	if (w2[3] / w2[2] - w2[1] / w2[2] * x < y)
+		return (-1)
+	else return (1)
 }
 
 classifADA = function(x,y){
-if (w1[3] / w1[2] - w1[1] / w1[2] * x < y)
-return (-1)
-else return (1)
+	if (w1[3] / w1[2] - w1[1] / w1[2] * x < y)
+		return (-1)
+	else return (1)
 }
-map()
