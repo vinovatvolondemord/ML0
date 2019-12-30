@@ -78,7 +78,7 @@ stohastGrad = function(xl,classes,L, rule){
 drawLine = function(w, color) {
   abline(a = w[3] / w[2], b = -w[1] / w[2], lwd = 1, col = color)
 }
-n <- 100
+objectCounter <- 100
 sigma1 <- matrix(c(1, 0, 0, 1),2,2)
 sigma2 <- matrix(c(1, 0, 0, 1),2,2)
 
@@ -89,7 +89,7 @@ x1 <- mvrnorm(n = objectCounter, mu1, sigma1)
 x2 <- mvrnorm(n = objectCounter, mu2, sigma2)
 xl <- rbind(x1,x2)
 xl <- normalize(xl)
-xl <- cbind(xl, rep(-1, n+n))
+xl <- cbind(xl, rep(-1, objectCounter+objectCounter))
 
 
 colorsn <- c(rep(2, n), rep(1, n))
@@ -102,3 +102,20 @@ w1 <- stohastGrad(xl, classes, adaline, adalineW)
 #w2 = stohastGrad(xl, classes, regression, regressionW)
 #drawLine(w2, "orange") 
 drawLine(w1, "black")
+map = function(){
+	for(i in seq(0, 1, 0.02)){
+   for(j in seq(0,1,0.02)){
+	color=classifADA (i, j)
+      if(color == -1)color=2
+points(i, j, pch = 1,col=colors[color])
+      
+    }
+  }
+}
+
+classifADA = function(x,y){
+if (w1[3] / w1[2] - w1[1] / w1[2] * x < y)
+return (-1)
+else return (1)
+}
+map()
